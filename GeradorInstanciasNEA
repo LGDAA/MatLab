@@ -1,0 +1,55 @@
+%Gerador Instancias Não Euclidianas Assimétricas
+
+clear all
+clear clc
+
+n = 5;
+
+%% 1º passo criar as coordenadas 
+
+coordenadas = 10 * rand(n,2);
+
+%% 2º passo criar a matriz n x n
+
+grafo_cidades = zeros(n,n);
+
+%% 3º passo calcular as distancias 
+
+for i = 1:n
+    for j = 1:n
+        %se o número da posição i for diferente do número da posição j
+        if i ~= j
+            % Adicionando um valor aleatório diferente para cada par de pontos
+            grafo_cidades(i, j) = rand;
+        end
+    end
+end
+
+grafo_cidades
+
+% Atribuir valores a uma variável INSTANCIA
+INSTANCIA.coord = coordenadas;
+INSTANCIA.tamanho = n;
+INSTANCIA.matriz = grafo_cidades;
+
+% Atribuir valores a um arquivo txt
+writematrix(num2str(INSTANCIA.coord,"%.2f "),"INSTcoordenadaNEA.txt", 'Delimiter', 'tab')
+writematrix(INSTANCIA.tamanho,"INSTtamanhoNEA.txt")
+writematrix(num2str(INSTANCIA.matriz,"%.2f "),'INSTmatrizNEA.txt', 'Delimiter', 'tab')
+
+%% Para ver as cidades
+figure=plot(coordenadas(:,1),coordenadas(:,2),"*");
+
+% Criar as arestas
+A = [];
+for (i=1:size(INSTANCIA.matriz))
+    for (j=i+1:size(INSTANCIA.matriz))
+        A = [A; [i j]];
+    end
+end    
+
+%% 7º passo criar o grafico não direcionado
+grafico = graph(A(:,1),A(:,2));
+
+%% 8º passo ver o gráfico não direcionado
+plot(grafico, "XData", INSTANCIA.coord(:,1), "YData", INSTANCIA.coord(:,2))
