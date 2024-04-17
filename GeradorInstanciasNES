@@ -1,0 +1,46 @@
+%Gerador Instancias Não Euclidianas Simetricas
+
+clear all;
+clear clc;
+
+n = 5;
+
+coordenadas = 10 * rand(n,2);
+
+% Criando uma matriz de distância aleatória
+grafo_cidades = rand(n);
+
+% Tornando a matriz simétrica
+grafo_cidades = grafo_cidades + grafo_cidades';
+
+% Ajustando a diagonal para zeros
+grafo_cidades = grafo_cidades - diag(diag(grafo_cidades));
+
+% Mostrando a matriz de distância resultante
+grafo_cidades
+
+INSTANCIA.coord = coordenadas;
+INSTANCIA.tamanho = n;
+INSTANCIA.matriz = grafo_cidades;
+
+% Atribuir valores a um arquivo txt
+writematrix(num2str(INSTANCIA.coord,"%.2f "),"INSTcoordenadaNES.txt", 'Delimiter', 'tab')
+writematrix(INSTANCIA.tamanho,"INSTtamanhoNES.txt", 'Delimiter', 'tab')
+writematrix(num2str(INSTANCIA.matriz,"%.2f "),'INSTmatrizNES.txt', 'Delimiter', 'tab')
+
+%% Para ver as cidades
+figure=plot(coordenadas(:,1),coordenadas(:,2),"*");
+
+% Criar as arestas
+A = [];
+for (i=1:size(INSTANCIA.matriz))
+    for (j=i+1:size(INSTANCIA.matriz))
+        A = [A; [i j]];
+    end
+end    
+
+%% 7º passo criar o grafico não direcionado
+grafico = graph(A(:,1),A(:,2));
+
+%% 8º passo ver o gráfico não direcionado
+plot(grafico, "XData", INSTANCIA.coord(:,1), "YData", INSTANCIA.coord(:,2))
