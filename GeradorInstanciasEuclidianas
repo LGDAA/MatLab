@@ -1,0 +1,48 @@
+clear all
+clear clc
+
+format bank
+n = 5
+
+%% 1 passo criar as coordenadas 
+coordenadas = 10 * rand(n,2)
+
+% cria valores randômicos em uma matriz N de 2 colunas
+
+%% 2ºpasso criar a matriz n x n
+grafo_cidades = zeros(n,n);
+
+%% 3ºpasso calcular as distâncias
+for (i = 1: n)
+    for (j = 1: n)
+        d = sqrt((coordenadas(i,1)-coordenadas(j,1))^2 + (coordenadas(i,2)-coordenadas(j,2))^2);
+        grafo_cidades(i,j) = d;
+    end
+end
+              
+grafo_cidades;
+
+INSTANCIA.coord = coordenadas;
+INSTANCIA.tamanho = n;
+INSTANCIA.matriz = grafo_cidades;
+
+writematrix(num2str(INSTANCIA.coord,"%.2f "),"INSTcoordenadaE.txt", 'Delimiter', 'tab')
+writematrix(INSTANCIA.tamanho,"INSTtamanhoE.txt")
+writematrix(num2str(INSTANCIA.matriz,"%.2f "),'INSTmatrizE.txt', 'Delimiter', 'tab')
+
+%% Para ver as cidades
+figure=plot(coordenadas(:,1),coordenadas(:,2),"*");
+
+%% 6º passo criar as arestas
+A = [];
+for (i=1:size(INSTANCIA.matriz))
+    for (j=i+1:size(INSTANCIA.matriz))
+        A = [A; [i j]];
+    end
+end    
+
+%% 7º passo criar o grafico não direcionado
+grafico = graph(A(:,1),A(:,2))
+
+%% 8º passo ver o gráfico não direcionado
+plot(grafico, "XData", INSTANCIA.coord(:,1), "YData", INSTANCIA.coord(:,2))
