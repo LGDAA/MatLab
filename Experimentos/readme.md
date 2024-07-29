@@ -1,4 +1,6 @@
-códigos de meta-heurísticas: Simulated Anneling (SA), Algoritmo Genético (AG) e Algoritmo Colônia de Formigas aplicadas em instâncias simétricas aleatórias.
+# Experimentos com instancias no MatLab
+
+## Este estudo foi realizado durante a aplicação da matéria TÓPICOS EM SISTEMAS DE COMPUTAÇÃO na Universidade Federal de Mato Grosso do Sul (UFMS)
 
 Meta-heurística: Uma meta-heurística é um procedimento de alto nível ou heurística projetada para encontrar, gerar ou selecionar uma heurística (algoritmo de busca parcial) que pode fornecer uma solução suficientemente boa para um problema de otimização.
 
@@ -11,4 +13,4 @@ Algoritmos genéticos são uma classe particular de algoritmos evolutivos que us
 Algoritmo Colônia de Formigas: O algoritmo da otimização da colônia de formigas, introduzido por Marco Dorigo em sua tese de PhD é uma heurística baseada em probabilidade, criada para solução de problemas computacionais que envolvem procura de caminhos em grafos. Este algoritmo foi inspirado na observação do comportamento das formigas ao saírem de sua colônia para encontrar comida.
 No mundo real, as formigas andam sem rumo (pelo menos inicialmente) até que, encontrada comida, elas retornam à colônia deixando um rastro de feromônio. Se outras formigas encontram um desses rastros, elas tendem a não seguir mais caminhos aleatórios. Em vez disso, seguem a trilha encontrada, retornando e inclusive enfatizando se acharam alimento.
 
-As 10 instâncias utilizadas nesse experimento foram retiradas do site TSPLIB através do link: {http://comopt.ifi.uni-heidelberg.de/software/TSPLIB95/tsp/}
+As 10 instâncias utilizadas nesse experimento foram retiradas do site TSPLIB através do link: http://comopt.ifi.uni-heidelberg.de/software/TSPLIB95/tsp/
