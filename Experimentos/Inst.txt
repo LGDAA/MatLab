@@ -1,0 +1,15 @@
+a280.txt
+att48.txt
+bays29.txt
+berlin52.txt
+ch130.txt
+d198.txt
+eil76.txt
+lin105.txt
+pr76.txt
+pr124.txt
+rat99.txt
+st70.txt
+ts225.txt
+u159.txt
+ulysses16.txt
